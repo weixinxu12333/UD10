@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UD10
 {
-    class Persona
+    public class Persona
     {
         #region Constantes
         public const char GENERO_DEFECTO = 'H';
@@ -58,7 +58,7 @@ namespace UD10
         }
         public char Sexo
         {
-            set { _sexo = value; }
+            set { _sexo = comprobarSexo(value); }
         }
         public double Peso
         {
@@ -91,8 +91,8 @@ namespace UD10
 
         private char comprobarSexo(char sexo)
         {
-            char gen = sexo;
-            if (sexo != 'M' && sexo != 'H')
+            char gen = Char.ToUpper(sexo);
+            if (gen != 'M' && gen != 'H')
                 gen = GENERO_DEFECTO;
             return gen;
         }

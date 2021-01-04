@@ -8,19 +8,19 @@ namespace UD10
     {
         public static void Inicio()
         {
-            Console.WriteLine("Indrocude nombre");
+            Console.WriteLine("Introduce nombre");
             string nombre = Console.ReadLine();
 
-            Console.WriteLine("Indrocude edad");
+            Console.WriteLine("Introduce edad");
             int edad = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Indrocude sexo, solo H o M");
+            Console.WriteLine("Introduce sexo, solo H o M");
             char sexo = Convert.ToChar(Console.ReadLine());
 
-            Console.WriteLine("Indrocude peso en kg");
+            Console.WriteLine("Introduce peso en kg");
             double peso = Convert.ToDouble(Console.ReadLine());
 
-            Console.WriteLine("Indrocude altura en m");
+            Console.WriteLine("Introduce altura en m");
             double altura = Convert.ToDouble(Console.ReadLine());
 
             Persona p1 = new Persona(nombre, edad, sexo, peso, altura);
