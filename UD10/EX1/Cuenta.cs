@@ -4,7 +4,7 @@ using System.Text;
 
 namespace UD10
 {
-    class Cuenta
+    public class Cuenta
     {
         public string titular { get; set; }
         public double cantidad { get; set; }
@@ -34,8 +34,8 @@ namespace UD10
         {
             if (this.cantidad - cantidad <= 0)
                 this.cantidad = 0;
-            else
-                this.cantidad = this.cantidad - cantidad;
+            else if(cantidad > 0)
+                this.cantidad -= cantidad;
 
         }
     }
