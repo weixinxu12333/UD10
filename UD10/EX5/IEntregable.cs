@@ -4,21 +4,16 @@ using System.Text;
 
 namespace UD10
 {
-    public interface IEntregable
+    public interface IEntregable : IComparable
     {
-        // estos son de videojuegos y series
-        string titulo { get; set; }
-        int temporada { get; set; }
-        string genero { get; set; }
-        string creador { get; set; }
-        //double horasEstimadas { get; set; }
-        //string compañia { get; set; }
+        string Titulo { get; set; }
+        string Genero { get; set; }
 
         string ToString();
 
-        bool entregar();
-        bool devolver();
-        bool isEntregado();
+        bool Entregar();
+        bool Devolver();
+        bool IsEntregado();
 
     }
 }

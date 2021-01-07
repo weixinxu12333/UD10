@@ -55,6 +55,48 @@ namespace UD10
                     var precioFinalTelevisiones = arrElectrodomesticos.Where(x => x is Television).Sum(x => x.PrecioFinal());
                     Console.WriteLine("Suma de precios de los electrodomésticos: {0}€\nLavadoras: {1}€\nTelevisiones: {2}€", precioFinalElectrodomesticos, precioFinalLavadoras, precioFinalTelevisiones);
                 })
+                .Add("EX5", () => 
+                {
+                    Serie[] arrSeries = new Serie[5];
+                    Videojuego[] arrVideojuegos = new Videojuego[5];
+                    Random rd = new Random();
+
+                    arrSeries[0] = new Serie("Soul", "Disney");
+                    arrSeries[1] = new Serie("Yanxi Palace", 1, "Drama", "Alguien");
+                    arrSeries[2] = new Serie("Wall-E", 1, "Anime", "Disney");
+                    arrSeries[3] = new Serie("Miauu", 5, "Anime", "Alguien");
+                    arrSeries[4] = new Serie();
+
+                    foreach (var serie in arrSeries)
+                    {
+                        if (rd.Next(0, 100) > 50) serie.Entregar();
+                    }
+
+                    arrVideojuegos[0] = new Videojuego("GTA 1", 5, "Accion", "Alguien");
+                    arrVideojuegos[1] = new Videojuego("GTA 2", 11);
+                    arrVideojuegos[2] = new Videojuego("GTA 3", 9, "Accion", "Alguien");
+                    arrVideojuegos[3] = new Videojuego("GTA 4", 50, "Accion", "Alguien");
+                    arrVideojuegos[4] = new Videojuego();
+
+                    foreach (var videojuego in arrVideojuegos)
+                    {
+                        if (rd.Next(0, 100) > 50) videojuego.Entregar();
+                    }
+
+                    Console.WriteLine("Series entregadas: {0}", arrSeries.Count(x => x.IsEntregado()));
+                    Console.WriteLine("Videojuegos entregados: {0}", arrVideojuegos.Count(x => x.IsEntregado()));
+
+                    //son array de objetos, porque hecho icomparable, por eso puedo ordenar, sino no.
+                    Array.Sort(arrSeries);
+                    Array.Sort(arrVideojuegos);
+
+                    Console.WriteLine("Serie con más temporadas:");
+                    Console.WriteLine(arrSeries.Last());
+                    Console.WriteLine("----------");
+                    Console.WriteLine("Videojuego con más horas estimadas:");
+                    Console.WriteLine(arrVideojuegos.Last());
+
+                })
                 .Add("Salir", () => salir = true);
             while (!salir)
                 menu.Display();

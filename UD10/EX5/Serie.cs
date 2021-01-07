@@ -1,16 +1,14 @@
-﻿using System;
-
-namespace UD10
+﻿namespace UD10
 {
-    public class Serie : IEntregable 
+    public class Serie : ISerie
     {
-        public string titulo { get; set; }
-        public int temporada { get; set; } = 3;
+        public string Titulo { get; set; }
+        public int Temporada { get; set; } = 3;
 
         //esto he escrito yo, porque no puede tener get ni set, en interface no deja
-        public bool entregado = false;
-        public string genero { get; set; }
-        public string creador { get; set; }
+        private bool Entregado = false;
+        public string Genero { get; set; }
+        public string Creador { get; set; }
 
         public Serie()
         {
@@ -18,38 +16,56 @@ namespace UD10
 
         public Serie(string titulo, string creador)
         {
-            this.titulo = titulo;
-            this.creador = creador;
+            Titulo = titulo;
+            Creador = creador;
         }
 
         public Serie(string titulo, int temporada, string genero, string creador)
         {
-            this.titulo = titulo;
-            this.temporada = temporada;
-            this.genero = genero;
-            this.creador = creador;
+            Titulo = titulo;
+            Temporada = temporada;
+            Genero = genero;
+            Creador = creador;
         }
 
         //estos vienen por defecto de INTERFACE
-        public bool devolver()
+        public bool Devolver()
         {
-            throw new NotImplementedException();
+            return Entregado = false;
         }
 
-        public bool entregar()
+        public bool Entregar()
         {
-            throw new NotImplementedException();
+            return Entregado = true;
         }
 
-        public bool isEntregado()
+        public bool IsEntregado()
         {
-            throw new NotImplementedException();
+            return Entregado;
         }
 
-        //escrito yo porque es override, no tiene herencia entre ellos, no se como hacer
+        //escrito yo porque es override, no tiene herencia entre ellos
         public override string ToString()
         {
-            return base.ToString();
+            return @$"
+                Serie: {Titulo}
+                Número Temporadas: {Temporada}
+                Entregado: {Entregado}
+                Genero: {Genero}
+                Creador: {Creador}
+            ";
+        }
+
+        public int CompareTo(object obj)
+        {
+            if(obj is Serie s)
+            {
+                if (s.Temporada > Temporada) return -1;
+                else if (s.Temporada < Temporada) return 1;
+                else return 0;
+            }
+            else
+                throw new System.ArgumentException("No es del tipo Serie", nameof(obj));
         }
     }
 }
